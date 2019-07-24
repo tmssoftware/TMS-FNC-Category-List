@@ -22,3 +22,5 @@ Please follow the steps below to get started with the Category List, after follo
    end;
   ``` 
 </ol>
+
+### Assigning a popup or embedded control ###
