@@ -1,5 +1,5 @@
 <a href="http://www.tmssoftware.com/site/tmsfncuipack.asp"><img src="https://tmssoftware.com/site/img/github/tmsfncuipack.png" title="TMS FNC UI Pack" alt="TMS FNC Cloud Pack"></a>
-<br/>
+# TMS FNC Category List #
 Please follow the steps below to get started with the Category List, after following the <a href="https://github.com/tmssoftware/TMS-FNC-UI-Pack/blob/master/README.md">main</a> steps to install the components in the IDE.
 <ol>
   <li>Drop an instance of TTMSFNCCategoryList on the form</li>  
