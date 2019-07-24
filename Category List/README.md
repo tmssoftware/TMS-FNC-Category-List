@@ -58,7 +58,7 @@ Please follow the steps below to get started with the Category List, after follo
     TMSFNCCategoryList1.BitmapContainer := TMSFNCBitmapContainer1;
     TMSFNCCategoryList1.Mode := clmHorizontal;
 
-    it := cat.AddCategoryItem('Calendar.png');
+    it := TMSFNCCategoryList1.AddCategoryItem('Calendar.png');
     it.PopupControl := TMSFNCCalendar1;
     it.PopupMode := ipmPopupControlSize;
 
