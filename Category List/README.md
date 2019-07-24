@@ -19,8 +19,7 @@ Please follow the steps below to get started with the Category List, after follo
    end;
   ``` 
 <img src="https://www.tmssoftware.com/site/img/github/tmsfnccategorylist.png"/>
-
-<li>
+</li>
 </ol>
 
 ### Assigning a popup or embedded control ###
