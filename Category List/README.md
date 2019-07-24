@@ -5,51 +5,74 @@ Please follow the steps below to get started with the Category List, after follo
   <li>Drop an instance of TTMSFNCCategoryList on the form</li>  
   <li>Drop an instance of TTMSFNCBitmapContainer on the form</li>
   <li>Add items to the TTMSFNCBitmapContainer instance</li>
-  <li>Use the following code to initialize the list</li>
+  <li>Use the following code to initialize the list
   
   ```delphi
   procedure TForm1.InitializeCategoryList;
   var
-    cat: TTMSFNCCategoryList;
     I: Integer;
   begin
-    cat := TTMSFNCCategoryList.Create(Self);
-    cat.BitmapContainer := TMSFNCBitmapContainer1;
-    cat.Parent := Self;
-    cat.Mode := clmHorizontal;
+    TMSFNCCategoryList1.BitmapContainer := TMSFNCBitmapContainer1;
+    TMSFNCCategoryList1.Mode := clmHorizontal;
     for I := 0 to TMSFNCBitmapContainer1.ItemCount - 1 do
-      cat.AddCategoryItem(TMSFNCBitmapContainer1.Items[I].Name);
+      TMSFNCCategoryList1.AddCategoryItem(TMSFNCBitmapContainer1.Items[I].Name);
    end;
   ``` 
-</ol>
-
 <img src="https://www.tmssoftware.com/site/img/github/tmsfnccategorylist.png"/>
+
+<li>
+</ol>
 
 ### Assigning a popup or embedded control ###
 <ol>
   <li>Drop an instance of any visual control you wish to show when clicking on an item on the form</li>
-  <li>Assign the visual control to the PopupControl property of the category list item</li>
+  <li>Assign the visual control to the PopupControl property of the category list item
   
   ```delphi
   procedure TForm1.InitializeCategoryList;
   var
-    cat: TTMSFNCCategoryList;
     it: TTMSFNCCategoryListItem;
   begin
-    cat := TTMSFNCCategoryList.Create(Self);
-    cat.BitmapContainer := TMSFNCBitmapContainer1;
-    cat.Parent := Self;
-    cat.Mode := clmHorizontal;
+    TMSFNCCategoryList1.BitmapContainer := TMSFNCBitmapContainer1;
+    TMSFNCCategoryList1.Mode := clmHorizontal;
+
+    it := TMSFNCCategoryList1.AddCategoryItem('Calendar.png');
+    it.PopupControl := TMSFNCCalendar1;
+    it.PopupMode := ipmPopupControlSize;
+
+    TMSFNCCategoryList1.AddCategoryItem('Recycle Bin.png');
+    TMSFNCCategoryList1.AddCategoryItem('Home.png');
+    TMSFNCCategoryList1.AddCategoryItem('Print.png');
+  end;
+  ```
+
+<img src="https://www.tmssoftware.com/site/img/github/tmsfnccategorylist2.png"/>
+
+</li>
+<li>Optionally change the popup mode to show an embedded control
+
+  ```delphi
+  procedure TForm1.InitializeCategoryList;
+  var
+    it: TTMSFNCCategoryListItem;
+  begin
+    TMSFNCCategoryList1.BitmapContainer := TMSFNCBitmapContainer1;
+    TMSFNCCategoryList1.Mode := clmHorizontal;
 
     it := cat.AddCategoryItem('Calendar.png');
     it.PopupControl := TMSFNCCalendar1;
     it.PopupMode := ipmPopupControlSize;
 
-    cat.AddCategoryItem('Recycle Bin.png');
-    cat.AddCategoryItem('Home.png');
-    cat.AddCategoryItem('Print.png');
+    TMSFNCCategoryList1.AddCategoryItem('Recycle Bin.png');
+    TMSFNCCategoryList1.AddCategoryItem('Home.png');
+    TMSFNCCategoryList1.AddCategoryItem('Print.png');
+    
+    TMSFNCCategoryList1.EmbeddedMode := True;    
   end;
   ```
-</ol>
 
-<img src="https://www.tmssoftware.com/site/img/github/tmsfnccategorylist2.png"/>
+<img src="https://www.tmssoftware.com/site/img/github/tmsfnccategorylist3.png"/>
+
+  
+</li>
+</ol>
