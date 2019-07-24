@@ -23,4 +23,33 @@ Please follow the steps below to get started with the Category List, after follo
   ``` 
 </ol>
 
+<img src="https://www.tmssoftware.com/site/img/github/tmsfnccategorylist.png"/>
+
 ### Assigning a popup or embedded control ###
+<ol>
+  <li>Drop an instance of any visual control you wish to show when clicking on an item on the form</li>
+  <li>Assign the visual control to the PopupControl property of the category list item</li>
+  
+  ```delphi
+  procedure TForm1.InitializeCategoryList;
+  var
+    cat: TTMSFNCCategoryList;
+    it: TTMSFNCCategoryListItem;
+  begin
+    cat := TTMSFNCCategoryList.Create(Self);
+    cat.BitmapContainer := TMSFNCBitmapContainer1;
+    cat.Parent := Self;
+    cat.Mode := clmHorizontal;
+
+    it := cat.AddCategoryItem('Calendar.png');
+    it.PopupControl := TMSFNCCalendar1;
+    it.PopupMode := ipmPopupControlSize;
+
+    cat.AddCategoryItem('Recycle Bin.png');
+    cat.AddCategoryItem('Home.png');
+    cat.AddCategoryItem('Print.png');
+  end;
+  ```
+</ol>
+
+<img src="https://www.tmssoftware.com/site/img/github/tmsfnccategorylist2.png"/>
