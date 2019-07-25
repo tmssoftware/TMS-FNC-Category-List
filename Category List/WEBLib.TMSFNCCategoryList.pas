@@ -19,9 +19,14 @@ unit WEBLib.TMSFNCCategoryList;
 
 {$IFDEF WEBLIB}
 {$DEFINE LCLWEBLIB}
+{$DEFINE CMNWEBLIB}
 {$ENDIF}
 {$IFDEF LCLLIB}
 {$DEFINE LCLWEBLIB}
+{$ENDIF}
+
+{$IFDEF CMNLIB}
+{$DEFINE CMNWEBLIB}
 {$ENDIF}
 
 interface
@@ -548,6 +553,7 @@ var
   pw, ph: Single;
   offs: Single;
   itd: TTMSFNCCategoryListDisplayItem;
+  gr, gc: Integer;
 
   procedure FindNewPos(AItem: TTMSFNCCategoryListItem; var ANewR: Integer; var ANewC: Integer; var AFound: Boolean; ARows , {%H-}ACurRow, AColumns, {%H-}ACurCol: Integer; PosArr: TTMSFNCCategoryListItemPosArray);
   var
@@ -598,6 +604,9 @@ begin
   pw := Width;
   ph := Height;
 
+  gr := GetRows;
+  gc := GetColumns;
+
   if EmbeddedMode then
   begin
     case Mode of
@@ -610,14 +619,14 @@ begin
   vs := Appearance.VerticalSpacing;
   w := pw - vs;
   iw := w;
-  if GetColumns > 0 then
-    iw := (w - (GetColumns * hs)) / GetColumns;
+  if gc > 0 then
+    iw := (w - (gc * hs)) / gc;
 
   h := ph - vs - GetTotalSeparatorHeight;
   sepc := GetTotalSeparatorCount;
   ih := h;
-  if (GetRows - sepc) > 0 then
-    ih := (h - ((GetRows - sepc) * vs)) / (GetRows - sepc);
+  if (gr - sepc) > 0 then
+    ih := (h - ((gr - sepc) * vs)) / (gr - sepc);
 
   AItemIndex := 0;
   APageIndex := 0;
@@ -627,11 +636,11 @@ begin
     c := 0;
     r := 0;
     SetLength(itposarr, 0, 0);
-    SetLength(itposarr, GetRows, GetColumns);
+    SetLength(itposarr, gr, gc);
 
-    while r < GetRows do
+    while r < gr do
     begin
-      while (c < GetColumns) do
+      while (c < gc) do
       begin
         if (AItemIndex >= 0) and (AItemIndex <= Items.Count - 1) and (APageIndex = 0) then
         begin
@@ -644,7 +653,7 @@ begin
 
           if AItem.Separator then
           begin
-            cspan := GetColumns;
+            cspan := gc;
             rspan := 1;
           end
           else
@@ -653,8 +662,8 @@ begin
             rspan := AItem.RowSpan;
           end;
 
-          cspan := Min(cspan, GetColumns - c);
-          rspan := Min(rspan, GetRows - r);
+          cspan := Min(cspan, gc - c);
+          rspan := Min(rspan, gr - r);
 
           exw := iw * cspan + (hs * (cspan - 1));
           if AItem.Separator then
@@ -712,11 +721,11 @@ begin
         newr := r;
         f := False;
         if (AItemIndex >= 0) and (AItemIndex <= Items.Count - 1) then
-          FindNewPos(Items[AItemIndex], newr, newc, f, GetRows, newr, GetColumns, newc, itposarr);
+          FindNewPos(Items[AItemIndex], newr, newc, f, gr, newr, gc, newc, itposarr);
         c := newc;
         r := newr;
 
-        if (c >= GetColumns) or (r >= GetRows) then
+        if (c >= gc) or (r >= gr) then
           Break;
       end;
       c := 0;
@@ -725,10 +734,10 @@ begin
       newr := r;
       f := False;
       if (AItemIndex >= 0) and (AItemIndex <= Items.Count - 1) then
-        FindNewPos(Items[AItemIndex], newr, newc, f, GetRows, newr, GetColumns, newc, itposarr);
+        FindNewPos(Items[AItemIndex], newr, newc, f, gr, newr, gc, newc, itposarr);
       c := newc;
       r := newr;
-      if r >= GetRows then
+      if r >= gr then
         Break;
     end;
     Inc(APageIndex);
@@ -1642,7 +1651,7 @@ begin
           clmVertical: SetBounds(Left, Top, Width - EmbeddedSize, Height);
         end;
         {$ENDIF}
-        {$IFDEF CMNLIB}
+        {$IFDEF CMNWEBLIB}
         case Mode of
           clmHorizontal: SetBounds(Left, Top, Width, Round(Height - EmbeddedSize));
           clmVertical: SetBounds(Left, Top, Round(Width - EmbeddedSize), Height);
@@ -1657,7 +1666,7 @@ begin
           clmVertical: SetBounds(Left, Top, Width + EmbeddedSize, Height);
         end;
         {$ENDIF}
-        {$IFDEF CMNLIB}
+        {$IFDEF CMNWEBLIB}
         case Mode of
           clmHorizontal: SetBounds(Left, Top, Width, Round(Height + EmbeddedSize));
           clmVertical: SetBounds(Left, Top, Round(Width + EmbeddedSize), Height);
@@ -1725,7 +1734,7 @@ begin
         {$IFDEF FMXLIB}
         Items[I].PopupControl.Align := TAlignLayout.None;
         {$ENDIF}
-        {$IFDEF CMNLIB}
+        {$IFDEF CMNWEBLIB}
         Items[I].PopupControl.Align := alNone;
         {$ENDIF}
         case Mode of
@@ -1740,7 +1749,7 @@ begin
               cleBottom: Items[I].PopupControl.Position.Y := 0;
             end;
             {$ENDIF}
-            {$IFDEF CMNLIB}
+            {$IFDEF CMNWEBLIB}
             Items[I].PopupControl.Left := 0;
             Items[I].PopupControl.Height := Round(EmbeddedSize);
             case EmbeddedItemPosition of
@@ -1760,7 +1769,7 @@ begin
               cleBottom: Items[I].PopupControl.Position.X := 0;
             end;
             {$ENDIF}
-            {$IFDEF CMNLIB}
+            {$IFDEF CMNWEBLIB}
             Items[I].PopupControl.Top := 0;
             Items[I].PopupControl.Width := Round(EmbeddedSize);
             case EmbeddedItemPosition of
