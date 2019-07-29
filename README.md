@@ -7,14 +7,14 @@ FREE open-source components for creating powerful, feature-rich UI applications,
 [Category List](https://github.com/tmssoftware/TMS-FNC-UI-Pack/tree/master/Category%20List)
 
 ## Installation notes ##
-Each subfolder of this repository contains a set of files based on the <a href="http://www.tmssoftware.com/site/tmsfncuipack.asp" target="_blank">TMS FNC UI Pack</a> and <a href="http://www.tmssoftware.com/site/tmsfnccore.asp" target="_blank">TMS FNC Core</a>.
+Each subfolder of this repository contains a set of files based on the <a href="http://www.tmssoftware.com/site/tmsfnccore.asp" target="_blank">TMS FNC Core</a>.
 <br/>
 To install these components, please follow the steps below.
 ### FMX ###
 <ol>
   <li>Create a new package</li>
   <li>Add the FMX*.pas files to the package</li>
-  <li>Add dependencies to FMXTMSFNCUIPackPkg**.dcp and FMXTMSFNCCorePkg**.dcp</li>
+  <li>Add dependencies to FMXTMSFNCCorePkg**.dcp</li>
   <li>Build and install the package</li>
   <li>Update the library path with the local folder source checkout of the subfolder of this repository</li>
 </ol>
@@ -23,7 +23,7 @@ To install these components, please follow the steps below.
 <ol>
   <li>Create a new package</li>
   <li>Add the VCL*.pas files to the package</li>
-  <li>Add dependencies to VCLTMSFNCUIPackPkg**.dcp and VCLTMSFNCCorePkg**.dcp</li>
+  <li>Add dependencies to VCLTMSFNCCorePkg**.dcp</li>
   <li>Build and install the package</li>
   <li>Update the library path with the local folder source checkout of the subfolder of this repository</li>
   <li>For WEB: update the TMS WEB library path under Options</li>
@@ -33,7 +33,7 @@ To install these components, please follow the steps below.
 <ol>
   <li>Create a new package</li>
   <li>Add the LCL*.pas files to the package</li>
-  <li>Add dependencies to LCLTMSFNCUIPackPkg and LCLTMSFNCCorePkg</li>
+  <li>Add dependencies to LCLTMSFNCCorePkg</li>
   <li>Build and install the package</li> 
 </ol>
 
