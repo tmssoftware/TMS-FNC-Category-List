@@ -33,7 +33,7 @@ interface
 
 uses
   Classes, VCL.TMSFNCTypes, VCL.TMSFNCGraphics, VCL.TMSFNCGraphicsTypes,
-  VCL.TMSFNCCustomControl, VCL.TMSFNCBitmapContainer, VCL.TMSFNCPopup, Controls
+  VCL.TMSFNCCustomControl, VCL.TMSFNCBitmapContainer, VCL.TMSFNCPopup, VCL.Controls
   {$IFNDEF LCLWEBLIB}
   ,UITypes, Generics.Collections, Types
   {$ENDIF}
