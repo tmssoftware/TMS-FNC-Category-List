@@ -1,7 +1,7 @@
 {********************************************************************}
 {                                                                    }
 { written by TMS Software                                            }
-{            copyright © 2017                                        }
+{            copyright (c) 2017                                      }
 {            Email : info@tmssoftware.com                            }
 {            Web : http://www.tmssoftware.com                        }
 {                                                                    }
